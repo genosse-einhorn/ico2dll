@@ -297,7 +297,7 @@ class IconFile:
                 self._load_from_file(f)
 
     def _load_from_file(self, f):
-        with mmap.mmap(f.fileno(), 0, prot=mmap.PROT_READ) as m:
+        with mmap.mmap(f.fileno(), 0, access=mmap.ACCESS_READ) as m:
             reserved, self.type, count = \
                 struct.unpack('<HHH', m[0:6])
 
